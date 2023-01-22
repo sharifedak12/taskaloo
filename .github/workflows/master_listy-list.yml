@@ -48,4 +48,4 @@ jobs:
         app-name: 'listy-list'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_659d1bf29e3d456baba16c8a7e3b20cd }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_587e719e389c45a4b97f9022d645661c }}/sharifedak12/listy-list:${{ github.sha }}'
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_587e719e389c45a4b97f9022d645661c }}/listy-list:${{ github.sha }}'
