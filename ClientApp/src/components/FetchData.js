@@ -5,11 +5,11 @@ export class FetchData extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { forecasts: [], loading: true };
+    this.state = { tasks: [], loading: true };
   }
 
   componentDidMount() {
-    this.populateWeatherData();
+    this.populateTaskData();
   }
 
   static renderTasksTable(tasks) {
@@ -51,7 +51,7 @@ export class FetchData extends Component {
     );
   }
 
-  async populateWeatherData() {
+  async populateTaskData() {
     const response = await fetch('taskitems');
     const data = await response.json();
     this.setState({ forecasts: data, loading: false });

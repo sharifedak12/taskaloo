@@ -12,16 +12,16 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /src
-COPY ["listy-list.csproj", "./"]
-RUN dotnet restore "listy-list.csproj"
+COPY ["taskaloo.csproj", "./"]
+RUN dotnet restore "taskaloo.csproj"
 COPY . .
 WORKDIR "/src/"
-RUN dotnet build "listy-list.csproj" -c Release -o /app/build
+RUN dotnet build "taskaloo.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "listy-list.csproj" -c Release -o /app/publish
+RUN dotnet publish "taskaloo.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "listy-list.dll"]
+ENTRYPOINT ["dotnet", "taskaloo.dll"]
