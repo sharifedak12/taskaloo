@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using taskaloo.Models;
 using taskaloo.Repositories;
 using taskaloo.Utility;
 
-namespace taskaloo.Controllers;
+namespace taskaloo.Models;
 
 [ApiController]
 [Route("[controller]")]
