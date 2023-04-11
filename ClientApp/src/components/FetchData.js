@@ -12,7 +12,7 @@ export class FetchData extends Component {
     this.populateWeatherData();
   }
 
-  static renderForecastsTable(forecasts) {
+  static renderTasksTable(tasks) {
     return (
       <table className="table table-striped" aria-labelledby="tableLabel">
         <thead>
@@ -24,12 +24,12 @@ export class FetchData extends Component {
           </tr>
         </thead>
         <tbody>
-          {forecasts.map(forecast =>
-            <tr key={forecast.date}>
-              <td>{forecast.date}</td>
-              <td>{forecast.temperatureC}</td>
-              <td>{forecast.temperatureF}</td>
-              <td>{forecast.summary}</td>
+          {tasks.map(task =>
+            <tr key={task.date}>
+              <td>{task.date}</td>
+              <td>{task.temperatureC}</td>
+              <td>{task.temperatureF}</td>
+              <td>{task.summary}</td>
             </tr>
           )}
         </tbody>
@@ -40,7 +40,7 @@ export class FetchData extends Component {
   render() {
     let contents = this.state.loading
       ? <p><em>Loading...</em></p>
-      : FetchData.renderForecastsTable(this.state.forecasts);
+      : FetchData.renderTasksTable(this.state.tasks);
 
     return (
       <div>
@@ -52,7 +52,7 @@ export class FetchData extends Component {
   }
 
   async populateWeatherData() {
-    const response = await fetch('weatherforecast');
+    const response = await fetch('taskitems');
     const data = await response.json();
     this.setState({ forecasts: data, loading: false });
   }
