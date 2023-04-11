@@ -52,7 +52,7 @@ export class FetchData extends Component {
   }
 
   async populateTaskData() {
-    const response = await fetch('taskitems');
+    const response = await fetch('tasks');
     const data = await response.json();
     this.setState({ forecasts: data, loading: false });
   }
