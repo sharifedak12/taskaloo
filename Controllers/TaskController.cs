@@ -1,28 +1,30 @@
 using Microsoft.AspNetCore.Mvc;
 using taskaloo.Repositories;
+using taskaloo.Services;
 using taskaloo.Utility;
+using static Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator;
 
 namespace taskaloo.Models;
 
 [ApiController]
-[Route("[controller]")]
+[Route("/tasks")]
 public class TaskItemController : ControllerBase
 {
     private readonly ILoggerService _logger;
-    private readonly ITaskRepository _taskRepository;
+    private readonly ITaskService _taskService;
 
-    public TaskItemController(ILoggerService logger, ITaskRepository taskRepository)
+    public TaskItemController(ILoggerService logger, ITaskService taskService)
     {
         _logger = logger;
-        _taskRepository = taskRepository;
+        _taskService = taskService;
     }
 
     [HttpGet(Name = "Tasks")]
     
-
-public async Task<List<TaskItem?>> GetTasks()
+    public async Task<ActionResult<List<TaskItem>>> GetTasksByUserId(Guid userId)
     {
-        var tasks = await _taskRepository.GetTasks();
-        return tasks;
+        _logger.LogInfo("Getting all tasks");
+        var tasks = await _taskService.GetTasks(userId);
+        return Ok(tasks);
     }
 }

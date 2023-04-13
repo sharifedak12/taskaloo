@@ -17,6 +17,7 @@ RUN dotnet restore "taskaloo.csproj"
 COPY . .
 WORKDIR "/src/"
 RUN dotnet build "taskaloo.csproj" -c Release -o /app/build
+RUN dotnet ef database update
 
 FROM build AS publish
 RUN dotnet publish "taskaloo.csproj" -c Release -o /app/publish

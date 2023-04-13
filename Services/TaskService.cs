@@ -7,9 +7,10 @@ public interface ITaskService
 
 {
     Task<TaskItem> GetTaskById(int id);
+    Task<List<TaskItem>> GetTasks(Guid userId);
 }
 
-public class TaskService
+public class TaskService : ITaskService
 {
     private readonly ITaskRepository _taskRepository;
 
@@ -23,9 +24,9 @@ public class TaskService
         return await _taskRepository.GetTask(id);
     }
     
-    public async Task<IEnumerable<TaskItem?>> GetTasks()
+    public async Task<List<TaskItem?>> GetTasks(Guid userId)
     {
-        return await _taskRepository.GetTasks();
+        return await _taskRepository.GetTasksByUser(userId);
     }
 
 }

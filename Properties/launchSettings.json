@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "listy_list": {
+    "taskaloo": {
       "commandName": "Project",
       "launchBrowser": true,
       "applicationUrl": "https://localhost:7087;http://localhost:5244",

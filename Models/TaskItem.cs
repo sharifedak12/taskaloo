@@ -6,6 +6,6 @@ public class TaskItem
     public string? Description { get; set; }
     public bool IsCompleted { get; set; }
     public int Id { get; set; }
-    public int UserId { get; set; }
+    public Guid UserId { get; set; }
     public int Priority { get; set; }
 }
