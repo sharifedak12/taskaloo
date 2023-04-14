@@ -20,11 +20,16 @@ public class TaskItemController : ControllerBase
     }
 
     [HttpGet(Name = "Tasks")]
-    
     public async Task<ActionResult<List<TaskItem>>> GetTasksByUserId(Guid userId)
     {
         _logger.LogInfo("Getting all tasks");
         var tasks = await _taskService.GetTasks(userId);
         return Ok(tasks);
+    }
+    [HttpPost(Name = "AddTask")]
+    public async Task<TaskItem> AddTask(TaskItem task)
+    {
+        await _taskService.AddTask(task);
+        return task;
     }
 }

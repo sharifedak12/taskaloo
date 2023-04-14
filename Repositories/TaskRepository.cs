@@ -12,10 +12,11 @@ public interface ITaskRepository
     Task<TaskItem> UpdateTask(TaskItem task);
     Task<TaskItem> DeleteTask(int id);
 }
-public class TaskRespository : ITaskRepository
+public class TaskRepository : ITaskRepository
 {
     private readonly BackendContext _context;
-    public TaskRespository(BackendContext context)
+    
+    public TaskRepository(BackendContext context)
     {
         _context = context;
     }
