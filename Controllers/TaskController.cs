@@ -32,9 +32,9 @@ public class TaskItemController : ControllerBase
         return task;
     }
     [HttpPut(Name = "UpdateTask")]
-    public async Task<TaskItem> UpdateTask(TaskItem task)
+    public async Task<TaskItem> UpdateTask(int id, TaskItem task)
     {
-        return await _taskService.UpdateTask(task.Id, task);
+        return await _taskService.UpdateTask(id, task);
     }
     [HttpDelete(Name = "DeleteTask")]
     public async Task<bool> DeleteTask(int id)
