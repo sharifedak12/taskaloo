@@ -1,10 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
-using taskaloo.Repositories;
+using taskaloo.Models;
 using taskaloo.Services;
 using taskaloo.Utility;
-using static Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator;
 
-namespace taskaloo.Models;
+namespace taskaloo.Controllers;
 
 [ApiController]
 [Route("/tasks")]
@@ -31,5 +30,15 @@ public class TaskItemController : ControllerBase
     {
         await _taskService.AddTask(task);
         return task;
+    }
+    [HttpPut(Name = "UpdateTask")]
+    public async Task<TaskItem> UpdateTask(TaskItem task)
+    {
+        return await _taskService.UpdateTask(task.Id, task);
+    }
+    [HttpDelete(Name = "DeleteTask")]
+    public async Task<bool> DeleteTask(int id)
+    {
+        return await _taskService.DeleteTask(id);
     }
 }

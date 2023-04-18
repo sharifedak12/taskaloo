@@ -1,7 +1,7 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using taskaloo.Data;
 using taskaloo.Models;
-
 namespace taskaloo.Repositories;
 
 public interface ITaskRepository
@@ -9,7 +9,7 @@ public interface ITaskRepository
     Task<List<TaskItem>> GetTasksByUser(Guid userId);
     Task<TaskItem?> GetTask(int id);
     Task<TaskItem> AddTask(TaskItem task);
-    Task<TaskItem> UpdateTask(TaskItem task);
+    Task<TaskItem> UpdateTask(int taskId, TaskItem task);
     Task<TaskItem> DeleteTask(int id);
 }
 public class TaskRepository : ITaskRepository
@@ -43,11 +43,31 @@ public class TaskRepository : ITaskRepository
         await _context.SaveChangesAsync();
         return task;
     }
-    public async Task<TaskItem> UpdateTask(TaskItem task)
+    public async Task<TaskItem> UpdateTask(int taskId, TaskItem task)
     {
-        _context.Entry(task).State = EntityState.Modified;
-        await _context.SaveChangesAsync();
-        return task;
+       var oldTask = _context.Tasks.FirstOrDefault(t=> t.Id == taskId);
+         if (oldTask == null)
+         {
+              throw new Exception("Task not found");
+         }
+         if (task.Description != null)
+         {
+             oldTask.Description = task.Description;
+         }
+         if (task.IsCompleted != oldTask.IsCompleted)
+         {
+             oldTask.IsCompleted = task.IsCompleted;
+         }
+         if (task.Priority != null)
+         {
+             oldTask.Priority = task.Priority;
+         }
+         if (task.UserId != null)
+         {
+             oldTask.UserId = task.UserId;
+         }
+         await _context.SaveChangesAsync();
+         return oldTask;
     }
     public async Task<TaskItem> DeleteTask(int id)
     {

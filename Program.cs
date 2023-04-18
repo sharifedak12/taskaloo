@@ -1,3 +1,4 @@
+using listy_list;
 using Microsoft.EntityFrameworkCore;
 using taskaloo.Data;
 using taskaloo.Repositories;
@@ -11,6 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(Startup));
 builder.Services.AddSingleton<ILoggerService, LoggerService>();
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<ITaskService, TaskService>();
