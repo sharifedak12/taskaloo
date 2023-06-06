@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import AppRoutes from './AppRoutes';
-import { Layout } from './components/Layout';
-import './custom.css';
+import React from 'react';
+import { ThemeProvider } from '@mui/material';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { StyledEngineProvider } from '@mui/material/styles';
 
-export default class App extends Component {
-  static displayName = App.name;
+import routes from './routes';
+import { AppContent } from './views';
+import theme from './assets/styles/theme';
 
-  render() {
+const App = () => {
     return (
-      <Layout>
-        <Routes>
-          {AppRoutes.map((route, index) => {
-            const { element, ...rest } = route;
-            return <Route key={index} {...rest} element={element} />;
-          })}
-        </Routes>
-      </Layout>
+        <StyledEngineProvider injectFirst>
+            <ThemeProvider theme={theme}>
+                <Router>
+                    <AppContent routes={routes} />
+                </Router>
+            </ThemeProvider>
+        </StyledEngineProvider>
     );
-  }
-}
+};
+
+export default App;

@@ -87,3 +87,11 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 # End of https://www.toptal.com/developers/gitignore/api/rider
+.idea/.idea.taskaloo/.idea/indexLayout.xml
+.DS_Store
+.idea/.idea.taskaloo/.idea/projectSettingsUpdater.xml
+.idea/.idea.taskaloo/.idea/vcs.xml
+.vscode/extensions.json
+.vscode/launch.json
+.vscode/settings.json
+.vscode/tasks.json

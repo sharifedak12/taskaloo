@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using taskaloo.Data;
 
-namespace listy_list;
+namespace taskaloo;
 
 public class Startup
 {
@@ -16,5 +16,7 @@ public class Startup
     {
         services.AddEntityFrameworkNpgsql().AddDbContext<BackendContext>(options =>
             options.UseNpgsql(Configuration.GetConnectionString("DbContext")));
+        
     }
+    
 }
