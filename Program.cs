@@ -11,14 +11,6 @@ using taskaloo.Utility;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<AuthorizationContext>();
-
-builder.Services.AddIdentityServer()
-    .AddApiAuthorization<User, AuthorizationContext>();
-
-builder.Services.AddAuthentication()
-    .AddIdentityServerJwt();
 builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

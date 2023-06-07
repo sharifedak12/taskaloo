@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@fontsource/roboto": "^5.0.2",
+    "@material-ui/icons": "^4.11.3",
+    "@mui/x-data-grid": "^6.6.0",
+    "material-table": "^2.0.3"
+  },
+  "devDependencies": {
+    "eslint-plugin-react-hooks": "^4.6.0"
+  }
+}

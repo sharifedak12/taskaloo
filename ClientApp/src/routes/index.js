@@ -5,14 +5,8 @@ import * as reviews from '../views';
 const routData = [
     {
         id: 'route-001',
-        path: '/authorize/login',
+        path: '/login',
         component: reviews.Login,
-        requiresAuth: true,
-    },
-    {
-        id: 'route-002',
-        path: '/verify',
-        component: reviews.VerifyPin,
         requiresAuth: true,
     },
     {
@@ -30,8 +24,8 @@ const routData = [
 
     {
         id: 'route-005',
-        path: '/queue',
-        component: reviews.Queue,
+        path: '/tasks',
+        component: reviews.Tasks,
         requiresAuth: false,
     },
 

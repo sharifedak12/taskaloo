@@ -8,8 +8,6 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
-import { LoginMenu }from '../LoginPage/LoginMenu';
-
 import Container from '@mui/material/Container';
 import { APP_CONSTANTS } from '../../config/config';
 
@@ -56,8 +54,6 @@ export default function PrimarySearchAppBar({ children, to, ...props }) {
             <li className="nav-link">
                 <NavLink to="/log-out">Log Out</NavLink>
             </li>
-            <LoginMenu>
-            </LoginMenu>
         </Menu>
     );
 
@@ -86,8 +82,6 @@ export default function PrimarySearchAppBar({ children, to, ...props }) {
                             <li className="nav-link">
                                 <NavLink to="/log-out">Log Out</NavLink>
                             </li>
-                            <LoginMenu>
-                            </LoginMenu>
                         </Box>
                         <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                             <IconButton

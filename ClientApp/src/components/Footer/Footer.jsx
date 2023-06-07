@@ -8,18 +8,8 @@ function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="left" {...props}>
             {'© Copyright '}
-            {new Date().getFullYear()}
-            <Link
-                color="inherit"
-                translate="no"
-                href="https://www.consuli.net/"
-                target="_blank"
-                sx={{ textDecoration: 'none' }}
-            >
-                {' '}
-                Consuli,
-            </Link>{' '}
-            {' a Public Benefit Company. All Rights Reserved. '}
+            {new Date().getFullYear()}{' '}
+            {'TaskWizard '}
         </Typography>
     );
 }

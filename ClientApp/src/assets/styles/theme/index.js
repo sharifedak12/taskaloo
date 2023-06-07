@@ -7,14 +7,14 @@ export default createTheme({
         },
     },
     typography: {
-        fontFamily: 'Lato sans-serif',
+        fontFamily: 'Roboto',
         fontWeight: '600',
         poster: {
             color: '#1A2733',
         },
         h3: {
             color: '#1A2733',
-            fontFamily: 'Lato',
+            fontFamily: 'Roboto',
             fontSize: '26px',
             fontWeight: 'bold',
             letterSpacing: 0,
@@ -22,7 +22,7 @@ export default createTheme({
         },
         h4: {
             color: '#1A2733',
-            fontFamily: 'Lato',
+            fontFamily: 'Roboto',
             fontSize: '18px',
             fontWeight: 'bold',
             letterSpacing: 0,
@@ -30,7 +30,7 @@ export default createTheme({
         },
         h5: {
             color: '#1A2733',
-            fontFamily: 'Lato',
+            fontFamily: 'Roboto',
             fontSize: '16px',
             fontWeight: 'bold',
             letterSpacing: 0,

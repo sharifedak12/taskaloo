@@ -12,9 +12,6 @@ import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import CssBaseline from '@mui/material/CssBaseline';
-import authService from "../../config/AuthorizeService";
-import {AuthenticationResultStatus} from "../../config/AuthorizeService";
-import {LoginActions, QueryParameterNames, ApplicationPaths } from "../../config/ApiAuthorizationConstants";
 
 
 const defaultFormInput = {
@@ -24,68 +21,67 @@ const defaultFormInput = {
 };
 
 const LoginPage = (props) => {
-    const dispatch = useDispatch();
+    //
+    // const navigate = useNavigate();
+    //
+    // const [formInput, setFormInput] = useState(defaultFormInput);
+    //
+    // const { isApiDone, isOtpVerified, id } = useSelector((state) => state.user);
+    //
+    // const snackbarObject = {
+    //     type: '',
+    //     message: '',
+    //     open: false,
+    // };
 
-    const navigate = useNavigate();
-
-    const [formInput, setFormInput] = useState(defaultFormInput);
-
-    const { isApiDone, isOtpVerified, id } = useSelector((state) => state.user);
-
-    const snackbarObject = {
-        type: '',
-        message: '',
-        open: false,
-    };
-
-    useEffect(() => {
-        localStorage.removeItem('token'); // clears the current token if user comes to signin page
-    }, []);
-
-    useEffect(() => {
-        if (isOtpVerified === false && isApiDone === true) {
-            dispatchSnackBar('success', 'Otp successfully Sent to your Register Mobile Number', true);
-            dispatch(setIsDone({ isApiDone: false }));
-            dispatch(generateOTP());
-
-            navigate('/verify');
-        } else if (isOtpVerified) {
-            navigate('/queue');
-        }
-    }, [id]);
-
-    const handleInputChange = (name, value) => {
-        setFormInput({
-            ...formInput,
-            [name]: value,
-        });
-    };
-
-    const dispatchSnackBar = (type, message, open) => {
-        snackbarObject.type = type;
-        snackbarObject.message = message;
-        snackbarObject.open = open;
-
-        dispatch(showSnackBar(snackbarObject));
-    };
-
-    const handleLogin = (e) => {
-        e.stopPropagation();
-        const signinDataObject = {
-            email: formInput.email,
-            password: formInput.password,
-        };
-
-        if (signinDataObject.email === '' || signinDataObject.password === '') {
-            dispatchSnackBar('error', 'Please fill in all the fields', true);
-        } else {
-            dispatch(signinUser(signinDataObject));
-        }
-    };
+    // useEffect(() => {
+    //     localStorage.removeItem('token'); // clears the current token if user comes to signin page
+    // }, []);
+    //
+    // useEffect(() => {
+    //     if (isOtpVerified === false && isApiDone === true) {
+    //         dispatchSnackBar('success', 'Otp successfully Sent to your Register Mobile Number', true);
+    //         dispatch(setIsDone({ isApiDone: false }));
+    //         dispatch(generateOTP());
+    //
+    //         navigate('/verify');
+    //     } else if (isOtpVerified) {
+    //         navigate('/queue');
+    //     }
+    // }, [id]);
+    //
+    // const handleInputChange = (name, value) => {
+    //     setFormInput({
+    //         ...formInput,
+    //         [name]: value,
+    //     });
+    // };
+    //
+    // const dispatchSnackBar = (type, message, open) => {
+    //     snackbarObject.type = type;
+    //     snackbarObject.message = message;
+    //     snackbarObject.open = open;
+    //
+    //     dispatch(showSnackBar(snackbarObject));
+    // };
+    //
+    // const handleLogin = (e) => {
+    //     e.stopPropagation();
+    //     const signinDataObject = {
+    //         email: formInput.email,
+    //         password: formInput.password,
+    //     };
+    //
+    //     if (signinDataObject.email === '' || signinDataObject.password === '') {
+    //         dispatchSnackBar('error', 'Please fill in all the fields', true);
+    //     } else {
+    //         dispatch(signinUser(signinDataObject));
+    //     }
+    // };
 
     return (
         <Fragment>
-            {isOtpVerified ? null : (
+            {/*{isOtpVerified ? null : (*/}
                 <Fragment>
                     <Grid container component="main" sx={{ height: '150vh' }}>
                         <CssBaseline />
@@ -105,8 +101,8 @@ const LoginPage = (props) => {
                                 <Box component="form" noValidate sx={{ mt: 4 }}>
                                     <TextField
                                         sx={{ mb: 2 }}
-                                        onChange={(e) => handleInputChange(e.target.name, e.target.value)}
-                                        value={formInput.email}
+                                        // onChange={(e) => handleInputChange(e.target.name, e.target.value)}
+                                        // value={formInput.email}
                                         fullWidth
                                         id="email"
                                         label="Email Address"
@@ -115,8 +111,8 @@ const LoginPage = (props) => {
                                     />
 
                                     <TextField
-                                        onChange={(e) => handleInputChange(e.target.name, e.target.value)}
-                                        value={formInput.password}
+                                        // onChange={(e) => handleInputChange(e.target.name, e.target.value)}
+                                        // value={formInput.password}
                                         fullWidth
                                         name="password"
                                         label="Password"
@@ -139,7 +135,7 @@ const LoginPage = (props) => {
                                             type="button"
                                             className="button-primary FllWidthBtn"
                                             variant="contained"
-                                            onClick={(e) => handleLogin(e)}
+                                            // onClick={(e) => handleLogin(e)}
                                             sx={{ float: 'right' }}
                                             style={{ padding: '0rem 3rem' }}
                                         >
@@ -153,7 +149,7 @@ const LoginPage = (props) => {
                     </Grid>
                     <Footer />
                 </Fragment>
-            )}
+            {/*)}*/}
         </Fragment>
     );
 };
